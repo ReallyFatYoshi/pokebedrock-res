@@ -50,7 +50,7 @@ jobs:
     - name: Read CHANGELOG.md
       id: read_changelog
       run: |
-        changelog=$(cat CHANGELOG.md)
+        changelog=$(cat > CHANGELOG.md << 'EOF')
         echo "::set-output name=changelog::$changelog"
           
     - name: Discord Webhook Action
