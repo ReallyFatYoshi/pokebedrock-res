@@ -30,12 +30,12 @@ jobs:
         echo "Version: $version"
         echo "::set-output name=version::$version"
 
-    - name: Create MCPack
+    - name: Create MCPACK
       run: |
         npm install
         node ./build.js
         
-    - name: Release
+    - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
         body_path: CHANGELOG.md

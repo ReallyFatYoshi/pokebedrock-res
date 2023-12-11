@@ -1,22 +1,17 @@
-on:
+name: Release messages to discord announcement channel
+
+on: 
   release:
-    types: [published]
+    types:
+      - created
 
 jobs:
-  github-releases-to-discord:
-    runs-on: ubuntu-latest
+  run_main:
+    runs-on: ubuntu-18.04
+    name: Sends custom message
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Github Releases To Discord
-        uses: SethCohen/github-releases-to-discord@v1.13.1
+      - name: Sending message
+        uses: nhevia/discord-styled-releases@main
         with:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          color: "2105893"
-          username: "Release Changelog"
-          avatar_url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
-          content: "||@everyone||"
-          footer_title: "Changelog"
-          footer_icon_url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
-          footer_timestamp: true
+          webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
