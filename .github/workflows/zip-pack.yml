@@ -58,6 +58,7 @@ jobs:
 
   send-message:
     runs-on: ubuntu-latest
+    steps:
     - name: Sending message
       uses: nhevia/discord-styled-releases@main
       with:
