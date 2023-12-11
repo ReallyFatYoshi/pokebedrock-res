@@ -56,6 +56,7 @@ jobs:
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
 
+  send-message:
     - name: Sending message
       uses: nhevia/discord-styled-releases@main
       with:
