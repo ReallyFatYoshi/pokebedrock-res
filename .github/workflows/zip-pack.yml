@@ -57,6 +57,7 @@ jobs:
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
 
   send-message:
+    needs: zip-release
     runs-on: ubuntu-latest
     steps:
     - name: Sending message
