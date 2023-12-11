@@ -57,6 +57,7 @@ jobs:
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
 
   send-message:
+    runs-on: ubuntu-latest
     - name: Sending message
       uses: nhevia/discord-styled-releases@main
       with:
