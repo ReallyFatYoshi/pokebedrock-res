@@ -1,4 +1,4 @@
-name: Zip and Release MCPack
+name: zip and create release
 
 permissions:
   contents: write
@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  build:
+  zip-release:
     if: "startsWith(github.event.head_commit.message, 'v')"
     runs-on: ubuntu-latest
 
@@ -55,16 +55,3 @@ jobs:
         embed-title: "[RES] v${{ steps.get_version.outputs.version }} updated .mcpack"
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
-
-    - name: Github Releases To Discord
-      uses: SethCohen/github-releases-to-discord@v1.13.1
-      with:
-        webhook_url: ${{ secrets.WEBHOOK_URL }}
-        color: "2105893"
-        username: "Release Changelog"
-        avatar_url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
-        content: "||@everyone||"
-        footer_title: "Changelog"
-        footer_icon_url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
-        footer_timestamp: true
-      
