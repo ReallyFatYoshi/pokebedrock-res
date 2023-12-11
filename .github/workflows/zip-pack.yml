@@ -56,10 +56,8 @@ jobs:
         embed-url: "https://github.com/smell-of-curry/pokebedrock-res"
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
 
-    - name: Sends custom message
-      steps:
-        - name: Sending message
-          uses: nhevia/discord-styled-releases@main
-          with:
-            webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
-            webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+    - name: Sending message
+      uses: nhevia/discord-styled-releases@main
+      with:
+        webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+        webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
