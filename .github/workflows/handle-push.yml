@@ -1,0 +1,33 @@
+name: Handle Push Events
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  push-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Generate missing_info.md and log file
+      run: npm run generateEntityFiles
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add entity
+        git commit -m "[ACTION] regenerated entity folder."
+        git push
