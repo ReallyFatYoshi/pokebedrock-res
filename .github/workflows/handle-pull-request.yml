@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Generate missing_info.md and log file
-      run: npm run generate-missing-info
+      run: npm run generateEntityFiles
 
     - name: Upload missing_info.md and log files as artifacts
       uses: actions/upload-artifact@v3
