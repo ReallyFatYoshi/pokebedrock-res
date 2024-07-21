@@ -38,11 +38,8 @@ jobs:
         script: |
           const fs = require('fs');
           const path = require('path');
-          
-          // Get the file paths
           const missingInfoPath = path.join(process.cwd(), 'missing_info.md');
-          const logFilePattern = path.join(process.cwd(), 'log-*.log');
-          
+
           const missingInfo = fs.existsSync(missingInfoPath) ? fs.readFileSync(missingInfoPath, 'utf8') : '';
           const logFiles = fs.readdirSync(process.cwd()).filter(file => file.match(/^log-.*\.log$/));
 
